@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Kookmin OTP Autofill",
+  "version": "0.1.0",
+  "description": "Fills the Kookmin portal OTP from the latest OTP mail subject in Gmail or Naver Mail. No external servers.",
+  "background": { "service_worker": "background.js", "type": "module" },
+  "content_scripts": [
+    { "matches": ["https://portal.kookmin.ac.kr/por/otp*"], "js": ["content.js"] }
+  ],
+  "action": { "default_popup": "options.html", "default_title": "OTP 자동입력 설정" },
+  "options_ui": { "page": "options.html", "open_in_tab": true },
+  "permissions": ["storage"],
+  "host_permissions": ["https://mail.google.com/*", "https://mail.naver.com/*"]
+}
