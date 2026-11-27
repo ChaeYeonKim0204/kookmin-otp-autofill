@@ -14,7 +14,8 @@ const naverList = (id, folderSN) => ['https://mail.naver.com/json/list', {
 const MAX_AGE_MS = 3 * 60 * 1000;
 // Mail may land slightly before the OTP page finishes loading, and clocks drift a little.
 const SINCE_SLACK_MS = 20 * 1000;
-const OTP_RE = /\[ON\s*국민포털\]\s*인증번호\D{0,10}?(\d{6})(?!\d)/; // e.g. '[ON국민포털] 인증번호 안내 123456'
+// e.g. '[ON국민포털] 인증번호 안내 123456', or with the portal in English '[ON Kookmin Portal] Verification Code 123456'
+const OTP_RE = /\[ON\s*(?:국민포털|Kookmin\s*Portal)\]\s*(?:인증번호|Verification\s*Code)\D{0,10}?(\d{6})(?!\d)/i;
 
 // mails: [{ subject, time (ms) }]. Looks at the newest 2 only; ignores anything older than MAX_AGE_MS
 // or received before the OTP page opened (`since`), so a leftover OTP from an earlier attempt isn't used.

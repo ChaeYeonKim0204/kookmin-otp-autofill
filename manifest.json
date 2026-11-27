@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Kookmin OTP Autofill",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Fills the Kookmin portal OTP from the latest OTP mail subject in Gmail or Naver Mail. No external servers.",
   "background": { "service_worker": "background.js", "type": "module" },
   "content_scripts": [

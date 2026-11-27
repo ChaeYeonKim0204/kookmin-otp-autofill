@@ -19,6 +19,7 @@ assert.equal(findOtp('<html>login page</html>', 0, now), null);
 assert.equal(findOtp(feed(entry('2026-10-01T06:49:30Z', '[ON국민포털] 인증번호 안내 482913', '')), 0, now), '482913', 'real subject format');
 assert.equal(findOtp(feed(entry('2026-10-01T06:49:30Z', '[ON 국민포털] 인증번호: 482913', '')), 0, now), '482913');
 assert.equal(findOtp(feed(entry('2026-10-01T06:49:30Z', '[ON국민포털] 인증번호 안내 4829131', '')), 0, now), null, '7 digits is not an OTP');
+assert.equal(findOtp(feed(entry('2026-10-01T06:49:30Z', '[ON Kookmin Portal] Verification Code 482913', '')), 0, now), '482913', 'English portal subject');
 
 const sec = iso => Date.parse(iso) / 1000;
 assert.equal(naverOtp({ mailData: [
